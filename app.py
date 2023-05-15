@@ -1,9 +1,13 @@
 # REMADE BY JOHN MARKY A. NATIVIDAD
 """PYTHON CALCULATOR"""
-from tkinter import Tk, Label, Button
+from tkinter import Tk, Label, Button, PhotoImage
 from ast import literal_eval
 
 root = Tk()
+
+icon = PhotoImage("logo.ico")
+root.iconbitmap(False, icon)
+
 root.title("Python Calculator")
 root.geometry("570x600+100+200")
 root.resizable(False, False)
@@ -11,28 +15,29 @@ root.configure(bg="#17161B")
 
 EQUATION = ""
 
+
 def show(value):
     """SHOWS A VALUE"""
-    global EQUATION # pylint: disable=W0603
+    global EQUATION  # pylint: disable=W0603
     EQUATION += value
     label_result.config(text=EQUATION)
 
 
 def clear():
     """CLEARS ALL VALUES"""
-    global EQUATION # pylint: disable=W0603
+    global EQUATION  # pylint: disable=W0603
     EQUATION = ""
     label_result.config(text=EQUATION)
 
 
 def calculate():
     """CALCULATES ALL VALUES"""
-    global EQUATION # pylint: disable=W0603
+    global EQUATION  # pylint: disable=W0603
     result = ""
     if EQUATION != "":
         try:
             result = literal_eval(EQUATION)
-        except: # pylint: disable=W0702
+        except:  # pylint: disable=W0702
             result = "Syntax Error!"
             EQUATION = ""
     label_result.config(text=result)
@@ -40,7 +45,7 @@ def calculate():
 
 def clearone():
     """CLEARS ONE VALUE FROM THE END"""
-    global EQUATION # pylint: disable=W0603
+    global EQUATION  # pylint: disable=W0603
     if EQUATION != "":
         EQUATION = [*EQUATION].pop()
         EQUATION = "".join(EQUATION)
